@@ -1,35 +1,35 @@
 # Project Plan
 
 ## Title
-Cryptocurrency Price Correlation with Bitcoin Blockchain Activity.
+Correlation Analysis between Bitcoin and S&P 500 Prices
 
 ## Main Question
-1. How does specific activity on the Bitcoin blockchain, such as large transactions or the frequency of transactions, correlate with the price movements of Bitcoin and other major cryptocurrencies?
+1. How do the price movements in cryptocurrency market correlate with the S&P 500 index, considering the perception of Bitcoin as a market sentiment indicator?
 
 ## Description
-The cryptocurrency market has always garnered significant attention due to its volatility and potential for lucrative returns. However, the exact factors influencing cryptocurrency prices remain multifaceted and not fully understood. This project seeks to dive deep into the correlation between Bitcoin's blockchain activities and the price fluctuations of major cryptocurrencies. By leveraging historical data on Bitcoin's blockchain and cryptocurrency prices, the analysis aims to unearth discernible patterns and correlations, potentially shedding light on the intricate dynamics of the cryptocurrency market.
+This project aims to explore the relationship between Bitcoin, a leading cryptocurrency, and the S&P 500, a key indicator of the US stock market's health. Given Bitcoin's growing prominence and its perceived role as a market sentiment indicator, understanding its correlation with traditional financial markets is of great interest. This analysis will use historical price data of both Bitcoin and the S&P 500 to identify potential correlations, divergences, and patterns that may exist between these two distinct but increasingly interconnected markets.
 
 ## Datasources
 
-### Datasource1: Bitcoin Blockchain Data
-* Metadata URL: [Kaggle Bitcoin Blockchain](https://www.kaggle.com/datasets/bigquery/bitcoin-blockchain)
-* Data URL: Direct download from the Kaggle dataset page.
-* Data Type: CSV
-
-A comprehensive dataset that offers a historical perspective on Bitcoin's blockchain, detailing transactions, outputs, and block metadata.
-
-### Datasource2: Cryptocurrency Price History
+### Datasource1: Cryptocurrency Price History
 * Metadata URL: [Kaggle Cryptocurrency Price History](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrencypricehistory)
 * Data URL: Direct download from the Kaggle dataset page.
 * Data Type: CSV
 
-This dataset captures the daily prices of major cryptocurrencies over time, providing insight into market dynamics and trends.
+This dataset provides the historical daily prices of various cryptocurrencies, offering insight into price trends, volatility, and market dynamics.
+
+### Datasource2: S&P 500 Historical Price Data
+* Metadata URL: [FRED S&P 500](https://fred.stlouisfed.org/series/SP500)
+* Data URL: Direct download from the FRED website.
+* Data Type: CSV
+
+A comprehensive dataset detailing the historical prices of the S&P 500 index, a key barometer of the US stock market and overall economic health.
 
 ## Work Packages
 
 1. [Data Acquisition and Cleaning](https://github.com/Emin-Mammadov/made-template/issues/1) #1
 2. [Exploratory Data Analysis](https://github.com/Emin-Mammadov/made-template/issues/2) #2
 3. [Feature Engineering](https://github.com/Emin-Mammadov/made-template/issues/3) #3
-4. [Correlation Analysis](https://github.com/Emin-Mammadov/made-template/issues/4) #4
+4. [Correlation Analysis between Bitcoin and S&P 500 Prices](https://github.com/Emin-Mammadov/made-template/issues/4) #4
 5. [Time Series Analysis](https://github.com/Emin-Mammadov/made-template/issues/5) #5
 6. [Conclusion and Recommendations](https://github.com/Emin-Mammadov/made-template/issues/6) #6
