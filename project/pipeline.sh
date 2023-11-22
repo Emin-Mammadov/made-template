@@ -11,4 +11,4 @@ pip install --upgrade pip
 pip install -r ./project/requirements.txt
 
 # Run your Python file
-python3 ./project/data_collector.py
+python3 ./project/pipeline.py

@@ -13,7 +13,6 @@ def download_kaggle(dataset, target_folder, bitcoin_filename):
     zip_file_path = os.path.join(target_folder, dataset.split('/')[-1] + '.zip')
     api.dataset_download_files(dataset, path=target_folder, unzip=False)
 
-    # Extract only the Bitcoin CSV file
     with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
         for member in zip_ref.namelist():
             if bitcoin_filename in member:
@@ -51,7 +50,7 @@ def align_dates(df1, df2):
     return df1, df2
 
 def save_to_sqlite(df, db_name, table_name):
-    db_path = os.path.join('../data', db_name)
+    db_path = os.path.join('./data', db_name)
     print(f"Saving to SQLite database at: {db_path}")  # Debug print
     try:
         with sqlite3.connect(db_path) as conn:
@@ -65,7 +64,7 @@ def save_to_sqlite(df, db_name, table_name):
 
 def main():
     # Define target folder
-    data_folder = '../data'
+    data_folder = './data'
 
     # Download and Process Bitcoin data
     kaggle_dataset = 'sudalairajkumar/cryptocurrencypricehistory'
