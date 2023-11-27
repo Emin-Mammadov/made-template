@@ -11,6 +11,11 @@ except pd.errors.ParserError as e:
 data.drop(columns=['Status'], inplace=True)
 data['Laenge'] = data['Laenge'].str.replace(',', '.').astype(float)
 data['Breite'] = data['Breite'].str.replace(',', '.').astype(float)
+data['DS100'] = data['DS100'].astype(str)
+data['IFOPT'] = data['IFOPT'].astype(str)
+data['NAME'] = data['NAME'].astype(str)
+data['Verkehr'] = data['Verkehr'].astype(str)
+data['Betreiber_Name'] = data['Betreiber_Name'].astype(str)
 
 valid_data = data[
     (data['Verkehr'].isin(['FV', 'RV', 'nur DPN'])) &
