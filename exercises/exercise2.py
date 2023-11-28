@@ -7,8 +7,9 @@ try:
 except pd.errors.ParserError as e:
     print(f"Error parsing CSV: {e}")
     
-
 data.drop(columns=['Status'], inplace=True)
+data.dropna(inplace=True)
+
 data['Laenge'] = data['Laenge'].str.replace(',', '.').astype(float)
 data['Breite'] = data['Breite'].str.replace(',', '.').astype(float)
 data['DS100'] = data['DS100'].astype(str)
@@ -16,7 +17,7 @@ data['IFOPT'] = data['IFOPT'].astype(str)
 data['NAME'] = data['NAME'].astype(str) 
 data['Verkehr'] = data['Verkehr'].astype(str)
 data['Betreiber_Name'] = data['Betreiber_Name'].astype(str)
-data['Betreiber_Nr'] = data['Betreiber_Name'].astype(int)
+data['Betreiber_Nr'] = data['Betreiber_Nr'].astype(int)
 
 valid_data = data[
     (data['Verkehr'].isin(['FV', 'RV', 'nur DPN'])) &
@@ -24,8 +25,6 @@ valid_data = data[
     (data['Breite'].between(-90, 90)) &
     (data['IFOPT'].str.match(r'^[a-zA-Z]{2}:\d+:\d+(?::\d+)?$'))
 ]
-
-valid_data.dropna(inplace=True)
 
 engine = create_engine('sqlite:///trainstops.sqlite')
 
