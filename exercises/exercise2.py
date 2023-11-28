@@ -16,6 +16,7 @@ data['IFOPT'] = data['IFOPT'].astype(str)
 data['NAME'] = data['NAME'].astype(str)
 data['Verkehr'] = data['Verkehr'].astype(str)
 data['Betreiber_Name'] = data['Betreiber_Name'].astype(str)
+data['Betreiber_Nr'] = data['Betreiber_Name'].astype(int)
 
 valid_data = data[
     (data['Verkehr'].isin(['FV', 'RV', 'nur DPN'])) &
