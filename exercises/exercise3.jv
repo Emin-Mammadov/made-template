@@ -1,0 +1,69 @@
+pipeline CarsPipeline {
+  CarsExtractor
+    -> CarsTextFileDecoder
+    -> CarsCSVInterpreter
+    -> RowDeleter
+    -> DeleteColumn
+    ->ColumnWriter
+    -> CarsTableInterpreter
+    -> CarsLoader;
+
+  block CarsExtractor oftype HttpExtractor {
+    url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv";
+  }
+
+  block CarsTextFileDecoder oftype TextFileInterpreter {encoding: "latin2";}
+
+  block DeleteColumn oftype ColumnDeleter{
+    delete: [column D, column E, column F, column Q, column H, column I, column J, column K, column L, column N, column O, column P, column Q, column R, column S, column T, column U, column V, column X, column Y, column Z, column AA, column AB, column AC, column AD, column AE, column AF, column AH, column AI, column AJ, column AK, column AL, column AM, column AN, column AO, column AP, column AR, column AS, column AT, column AU, column AV, column AW, column AX, column AY, column AZ, column BB, column BC, column BD, column BE, column BF, column BQ, column BH, column BI, column BJ, column BL, column BM, column BM, column BQ, column BR, column BS, column BT, column BV, column BW, column BX, column BY, column BZ, column CA, column CB, column CC, column CD, column CE];
+	}
+  block ColumnWriter oftype CellWriter {
+at: range A1:J1;
+write: ["date","CIN","name","petrol","diesel","gas","electro","hybrid","plugInHybrid","others"];
+}
+  block CarsCSVInterpreter oftype CSVInterpreter {
+    delimiter: ";";
+  }
+  block RowDeleter oftype RowDeleter {
+   delete: [row 1,row 2,row 3,row 4,row 5,row 6,row 484,row 485,row 486,row 487];
+ }
+
+  block CarsTableInterpreter oftype TableInterpreter {
+    header: true;
+        columns: [
+            'date' oftype text,
+            'CIN' oftype CommunityIdentificationNumber,
+            'name' oftype text,
+            'petrol' oftype PositiveInteger,
+            'diesel' oftype PositiveInteger,
+            'gas' oftype PositiveInteger,
+            'electro' oftype PositiveInteger,
+            'hybrid' oftype PositiveInteger,
+            'plugInHybrid' oftype PositiveInteger,
+            'others' oftype PositiveInteger,
+        ];
+  }
+  valuetype CommunityIdentificationNumber oftype text {
+    constraints: [
+        ExactlyFiveCharacters,
+        OnlyDigits,
+    ];
+}
+constraint ExactlyFiveCharacters on text:
+    value.length == 5;
+constraint OnlyDigits on text:
+    value matches /^[0-9]*$/;
+
+valuetype PositiveInteger oftype integer {
+    constraints: [
+        PositiveNumber,
+    ];
+}
+constraint PositiveNumber on integer:
+    value > 0;
+
+block CarsLoader oftype SQLiteLoader {
+    table: "cars";
+    file: "./cars.sqlite";
+  }
+}
