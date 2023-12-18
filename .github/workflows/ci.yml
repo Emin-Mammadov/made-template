@@ -20,4 +20,4 @@ jobs:
 
       - name: Run tests using test.sh
         run: |
-          bash ./test.sh
+          bash ./project/test.sh
