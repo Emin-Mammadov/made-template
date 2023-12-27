@@ -1,7 +1,7 @@
 # Project Plan
 
 ## Title
-Correlation Analysis between Bitcoin and S&P 500 Prices
+Relationship between Bitcoin and S&P 500 Prices
 
 ## Main Question
 1. How do the price movements in cryptocurrency market correlate with the S&P 500 index, considering the perception of Bitcoin as a market sentiment indicator?
